@@ -1,7 +1,17 @@
 import * as React from 'react';
 
-export interface AppProps { compiler: string; framework: string; }
+import Gallery from './Gallery';
 
-const App = (props: AppProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+export interface AppProps {
+  compiler: string;
+  framework: string;
+}
+
+const App = (props: AppProps) => (
+  <>
+    <h1>Squish</h1>
+    <Gallery />
+  </>
+);
 
 export default App;
