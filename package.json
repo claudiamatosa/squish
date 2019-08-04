@@ -6,12 +6,24 @@
   "author": "Claudia Matosa <claudiamatosa@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn clean && mkdir -p dist && yarn build:images",
+    "build": "yarn clean && mkdir -p dist && yarn build:images && yarn build:app",
+    "build:app": "cp src/index.html dist/ && yarn webpack",
     "build:images": "node ./build/images.js && cp -r src/static dist/static",
     "start": "http-server dist",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "@types/react": "^16.8.24",
+    "@types/react-dom": "^16.8.5",
+    "http-server": "^0.11.1",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
