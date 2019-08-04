@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Gallery from './Gallery';
 
@@ -15,9 +15,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const Title = styled.h1`
+  font-family: pt-sans-narrow;
+  font-weight: 600;
+  text-align: center;
+  font-size: 50px;
+`;
+
 const App = (props: AppProps) => (
   <>
-    <h1>Squish</h1>
+    <Title>You squish the life out of me</Title>
     <Gallery />
     <GlobalStyle />
   </>
