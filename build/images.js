@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-fs.readdir(path.join(__dirname, '..', 'src/public/images/gallery'), (err, files) => {
+fs.readdir(path.join(__dirname, '..', 'src/static/images/gallery'), (err, files) => {
   const gallery = [];
 
   files.forEach(file => {
-    gallery.push(`/images/gallery/${file}`);
+    gallery.push(`/static/images/gallery/${file}`);
   });
 
   fs.mkdirSync(path.join(__dirname, '..', 'dist/data'), { recursive: true });

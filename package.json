@@ -6,9 +6,10 @@
   "author": "Claudia Matosa <claudiamatosa@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p dist && yarn build:images",
-    "build:images": "node ./build/images.js && cp -r src/public/images dist/images",
-    "start": "http-server dist"
+    "build": "yarn clean && mkdir -p dist && yarn build:images",
+    "build:images": "node ./build/images.js && cp -r src/static dist/static",
+    "start": "http-server dist",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "http-server": "^0.11.1"
