@@ -14,6 +14,6 @@ fs.readdir(path.join(__dirname, '..', 'src/static/images/gallery'), (err, files)
 
   fs.writeFile(path.join(__dirname, '..', 'dist/data/gallery.json'), JSON.stringify(gallery), (err) => {
     if (err) throw err;
-    console.log('dista/data/gallery.json has been saved');
+    console.log('dist/data/gallery.json has been saved');
   });
 });

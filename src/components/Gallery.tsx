@@ -100,10 +100,9 @@ const Gallery = (props: GalleryProps) => {
         <Overlay
           imageUrl={selectedImage}
           next={() => {
-            console.log(selectedImage);
             if (!selectedImage) return;
             const currentImage = images.findIndex((image: string) => image === selectedImage);
-            const nextImage = currentImage < images.length - 1 ? 0 : currentImage + 1;
+            const nextImage = currentImage === images.length - 1 ? 0 : currentImage + 1;
             setView(images[nextImage]);
             selectImage(images[nextImage]);
           }}
