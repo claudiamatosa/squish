@@ -24,9 +24,9 @@ const Title = styled.h1`
 
 const App = (props: AppProps) => (
   <>
+    <GlobalStyle />
     <Title>You squish the life out of me</Title>
     <Gallery />
-    <GlobalStyle />
   </>
 );
 

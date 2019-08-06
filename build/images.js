@@ -5,7 +5,9 @@ fs.readdir(path.join(__dirname, '..', 'src/static/images/gallery'), (err, files)
   const gallery = [];
 
   files.forEach(file => {
-    gallery.push(`/static/images/gallery/${file}`);
+    if (file.endsWith('.jpg')) {
+      gallery.push(`/static/images/gallery/${file}`);
+    }
   });
 
   fs.mkdirSync(path.join(__dirname, '..', 'dist/data'), { recursive: true });

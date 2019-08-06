@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useAsync } from 'react-async-hook';
 import styled from 'styled-components';
 
+import shuffle from '../utils/shuffle';
+
 export interface GalleryProps {
 
 }
@@ -11,7 +13,7 @@ const Gallery = styled.ul`
   column-count: 1;
   column-gap: 10px;
   list-style: none;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
 
   @media (min-width: 400px) {
@@ -32,12 +34,11 @@ const Gallery = styled.ul`
 `;
 
 const Item = styled.li`
+  margin: 0 0 10px;
   padding: 0;
-  margin: 0;
 `;
 
 const Image = styled.img`
-  margin-bottom: 10px;
   max-width: 100%;
 `;
 
@@ -53,7 +54,7 @@ const App = (props: GalleryProps) => {
       {error && <div>Error: {error.message}</div>}
       {result && (
         <Gallery>
-          {result.map((image: string) => (
+          {shuffle(result).map((image: string) => (
             <Item>
               <Image src={image} alt="" />
             </Item>
