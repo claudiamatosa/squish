@@ -65,9 +65,6 @@ const setView = (image: string | null): void => {
   window.history.pushState({}, "", buildImageUrl(image));
 };
 
-const fetchImageList = async () =>
-  (await fetch(`/data/gallery.json`)).json();
-
 const Gallery = (props: GalleryProps) => {
   const { loading, error, images } = useGalleryData();
   const [selectedImage, selectImage] = React.useState(null);
@@ -103,15 +100,16 @@ const Gallery = (props: GalleryProps) => {
         <Overlay
           imageUrl={selectedImage}
           next={() => {
+            console.log(selectedImage);
             if (!selectedImage) return;
-            const currentImage = images.findIndex(selectedImage);
+            const currentImage = images.findIndex((image: string) => image === selectedImage);
             const nextImage = currentImage < images.length - 1 ? 0 : currentImage + 1;
             setView(images[nextImage]);
             selectImage(images[nextImage]);
           }}
           previous={() => {
             if (!selectedImage) return;
-            const currentImage = images.findIndex(selectedImage);
+            const currentImage = images.findIndex((image: string) => image === selectedImage);
             const previousImage = currentImage < 1 ? images.length - 1 : currentImage - 1;
             setView(images[previousImage]);
             selectImage(images[previousImage]);
