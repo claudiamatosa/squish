@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 
+import { useBreakpoints } from '../config/breakpoints';
+
 export interface OverlayProps {
   next: () => void,
   previous: () => void,
@@ -8,7 +10,17 @@ export interface OverlayProps {
   imageUrl: string | null
 }
 
-const innerPadding = 20;
+const innerPadding = {
+  small: '0',
+  medium: '20px',
+  desktop: '30px'
+};
+
+const buttonMargin = {
+  small: '5px',
+  medium: '10px',
+  desktop: '15px'
+};
 
 const Wrapper = styled.div`
   z-index: 1000;
@@ -21,55 +33,64 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
+
+  ${useBreakpoints('padding', innerPadding)}
 `;
 
 const Image = styled.img`
   flex: 0 0 auto;
-  max-height: calc(100vh - ${innerPadding * 2}px);
-  max-width: calc(100vw - ${innerPadding * 2}px);
+  max-height: 100%;
+  max-width: 100%;
   position: relative;
   z-index: 10;
 `;
 
-const ClearButtton = css`
+const ClearButton = css`
   appearance: none;
   text-decoration: none;
   margin: 0;
   padding: 0;
-  display: block;
+  display: inline-block;
+  line-height: 1;
+  padding: 0;
   z-index: 50;
   cursor: pointer;
   border: none;
   background-color: transparent;
+  height: auto;
+  width: auto;
 
   &::before {
     display: block;
     content: '>';
     font-family: pt-sans;
-    font-weight: 700;
-    font-size: 50px;
-    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 40px;
+    padding: 0 5px;
     color: white;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
   }
 `;
 
 const Close = styled.button`
-  ${ClearButtton};
+  ${ClearButton};
   position: absolute;
-  top: 20px;
-  right: 20px;
+  
+  ${useBreakpoints('top', buttonMargin)}
+  ${useBreakpoints('right', buttonMargin)}
 
   &::before {
     content: 'x';
+    font-size: 30px;
   }
 `;
 
 const Previous = styled.button`
-  ${ClearButtton};
+  ${ClearButton};
   position: absolute;
   top: calc(50vh - 25px);
-  left: 20px;
+
+  ${useBreakpoints('left', buttonMargin)}
 
   &::before {
     content: '<';
@@ -77,10 +98,11 @@ const Previous = styled.button`
 `;
 
 const Next = styled.button`
-  ${ClearButtton};
+  ${ClearButton};
   position: absolute;
   top: calc(50vh - 25px);
-  right: 20px;
+
+  ${useBreakpoints('right', buttonMargin)}
 
   &::before {
     content: '>';
@@ -113,22 +135,10 @@ const Overlay = ({ next, previous, close, imageUrl }: OverlayProps) => {
 
   return imageUrl ? (
     <Wrapper tabIndex={0} onKeyUp={keyUp} ref={wrapper}>
-      <Close onClick={(e) => {
-        e.preventDefault();
-        close();
-      }} />
-
-      <Previous onClick={(e) => {
-        e.preventDefault();
-        previous();
-      }} />
-
+      <Close onClick={close} title="Close" />
+      <Previous onClick={previous} title="Previous image" />
       <Image src={imageUrl} alt="" />
-
-      <Next onClick={(e) => {
-        e.preventDefault();
-        next();
-      }} />
+      <Next onClick={next} title="Next image" />
     </Wrapper>
   ): null
 };

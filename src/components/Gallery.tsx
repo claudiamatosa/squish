@@ -3,10 +3,19 @@ import styled from 'styled-components';
 import { parse, stringify } from 'query-string';
 
 import Overlay from './Overlay';
+import { useBreakpoints } from '../config/breakpoints';
 import useGalleryData from '../data/useGalleryData';
 
 export interface GalleryProps {
  
+}
+
+export const columnCount = {
+  mini: 1,
+  small: 2,
+  medium: 3,
+  desktop: 4,
+  wide: 5
 }
 
 const Wrapper = styled.ul`
@@ -17,21 +26,7 @@ const Wrapper = styled.ul`
   padding: 10px 0;
   margin: 0;
 
-  @media (min-width: 400px) {
-    column-count: 2;
-  }
-
-  @media (min-width: 768px) {
-    column-count: 3;
-  }
-
-  @media (min-width: 1024px) {
-    column-count: 4;
-  }
-
-  @media (min-width: 1308px) {
-    column-count: 5;
-  }
+  ${useBreakpoints('column-count', columnCount)}
 `;
 
 const Item = styled.li`
