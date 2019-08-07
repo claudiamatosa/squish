@@ -34,11 +34,17 @@ const Item = styled.li`
   padding: 0;
 `;
 
-const ImageLink = styled.a`
+const ImageLink = styled.a<{ readonly selected: boolean }>`
   text-decoration: none;
   margin: 0;
   padding: 0;
   display: block;
+  transition: filter 0.5s ease-in-out;
+  filter: ${props => props.selected ? 'saturate(20%)' : 'none' };
+
+  &:hover, &:focus {
+    filter: saturate(200%) invert(10%) contrast(120%);
+  }
 `;
 
 const Image = styled.img`
@@ -80,6 +86,7 @@ const Gallery = (props: GalleryProps) => {
             <Item>
               <ImageLink
                 href={buildImageUrl(image)}
+                selected={selectedImage === image}
                 onClick={(e) => {
                   e.preventDefault();
                   setView(image);

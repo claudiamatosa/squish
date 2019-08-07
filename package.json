@@ -6,9 +6,10 @@
   "author": "Claudia Matosa <claudiamatosa@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn clean && mkdir -p dist && yarn build:images && yarn build:app",
+    "build": "yarn clean && mkdir -p dist && yarn build:images && yarn build:favicon && yarn build:app",
     "build:app": "cp src/index.html dist/ && yarn webpack",
     "build:images": "node ./build/images.js && cp -r src/static dist/static",
+    "build:favicon": "cp -r src/favicon/* dist/",
     "start": "http-server dist",
     "clean": "rm -rf dist"
   },
