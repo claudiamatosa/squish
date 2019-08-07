@@ -87,9 +87,32 @@ const Next = styled.button`
   }
 `;
 
+interface KeyboardActions {
+  ArrowLeft: () => void,
+  ArrowRight: () => void,
+  Escape: () => void
+}
+
 const Overlay = ({ next, previous, close, imageUrl }: OverlayProps) => {
+  const wrapper = React.useRef(null);
+
+  React.useEffect(() => {
+    wrapper.current && wrapper.current.focus();
+  });
+
+  const keyEvents: KeyboardActions = {
+    ArrowLeft: previous,
+    ArrowRight: next,
+    Escape: close
+  };
+
+  const keyUp = ({ key }: React.KeyboardEvent) => {
+    const action = (keyEvents as any)[key];
+    if (action) action();
+  };
+
   return imageUrl ? (
-    <Wrapper>
+    <Wrapper tabIndex={0} onKeyUp={keyUp} ref={wrapper}>
       <Close onClick={(e) => {
         e.preventDefault();
         close();
