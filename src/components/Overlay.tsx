@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(30, 30, 30, 0.8);
 
   ${useBreakpoints('padding', innerPadding)}
 `;

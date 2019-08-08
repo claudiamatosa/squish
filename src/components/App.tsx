@@ -10,6 +10,7 @@ export interface AppProps {
 
 const GlobalStyle = createGlobalStyle`
   body {
+    background-color: #F1F1F1;
     margin: 0;
     padding: 0;
   }
