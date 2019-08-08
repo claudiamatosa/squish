@@ -24,28 +24,13 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const titleAnimation = keyframes`
-  0% {
-    color: #777777;
-    transform: scale(1);
-  }
-
-  14% {
-    transform: scale(1.3);
-  }
-
-  28% {
-    color: #ED8B36;
-    transform: scale(1);
-  }
-
-  42% {
-    transform: scale(1.3);
-  }
-
-  70% {
-    color: #777777;
-    transform: scale(1);
-  }
+  0%   { transform: scale(1,1); color: #777777; }
+  10%  { transform: scale(1.2,.9); }
+  30%  { transform: scale(.9,1.1); }
+  50%  { transform: scale(1.05,.95); color: #ED8B36; }
+  57%  { transform: scale(1,1); }
+  64%  { transform: scale(1,1); }
+  100% { transform: scale(1,1); color: #777777; }
 `;
 
 const Title = styled.h1`
@@ -61,8 +46,9 @@ const Title = styled.h1`
 const Squish = styled.span`
   text-transform: uppercase;
   color: #667705;
-  animation: ${titleAnimation} 4s ease-in-out;
+  animation: ${titleAnimation} 1.5s cubic-bezier(0.280, 0.840, 0.420, 1);
   display: inline-block;
+  animation-delay: 3s;
 `;
 
 const App = (props: AppProps) => (
