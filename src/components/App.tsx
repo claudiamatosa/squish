@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import randomColor from 'randomcolor';
 
 import Gallery from './Gallery';
 import { useBreakpoints } from '../config/breakpoints';
@@ -26,13 +27,15 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const titleAnimation = keyframes`
-  0%   { transform: scale(1,1); color: #777777; }
+  0%   { transform: scale(1,1); }
   10%  { transform: scale(1.2,.9); }
   30%  { transform: scale(.9,1.1); }
-  50%  { transform: scale(1.05,.95); color: #ED8B36; }
+  50%  { transform: scale(1.05,.95); color: ${randomColor({
+    luminosity: 'bright'
+  })}; }
   57%  { transform: scale(1,1); }
   64%  { transform: scale(1,1); }
-  100% { transform: scale(1,1); color: #777777; }
+  100% { transform: scale(1,1); }
 `;
 
 const Title = styled.h1`
@@ -51,20 +54,26 @@ const Title = styled.h1`
   })}
 `;
 
-const SquishStyle = styled.span`
+const Squish = styled.span`
   text-transform: uppercase;
-  color: #667705;
+  color: ${randomColor({
+    luminosity: 'dark'
+  })};
   animation: ${titleAnimation} 1.5s cubic-bezier(0.280, 0.840, 0.420, 1);
   display: inline-block;
   animation-delay: 3s;
 `;
 
-const Squish = () => <SquishStyle>squish</SquishStyle>;
-
 const titles = [
-  <>You <Squish /> my breath away</>,
-  <><Squish /> me, <Squish /> me, say that you'll <Squish /> me</>,
-  <>You're simply the best, <Squish />ier than all the rest</>
+  <>You <Squish>squish</Squish> my breath away</>,
+  <>Squish me, <Squish>squish</Squish> me, say that you'll squish me</>,
+  <>You're simply the best, <Squish>squishier</Squish> than all the rest</>,
+  <>And I'm free, free <Squish>squishin'</Squish></>,
+  <>Can't you see that it's just <Squish>squishin'</Squish></>,
+  <>You can <Squish>squish</Squish> your own way</>,
+  <>I'm too <Squish>squishy</Squish> (hot damn)</>,
+  <>Does that make me <Squish>squishy</Squish>?</>,
+  <>I've got the <Squish>squish</Squish> like Jagger</>
 ];
 
 const selectTitle = () => {
@@ -74,10 +83,12 @@ const selectTitle = () => {
   return titles[index];
 };
 
+const title = selectTitle();
+
 const App = (props: AppProps) => (
   <>
     <GlobalStyle />
-    <Title>{selectTitle()}</Title>
+    <Title>{title}</Title>
     <Gallery />
   </>
 );

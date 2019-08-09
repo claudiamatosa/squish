@@ -31,7 +31,9 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "@types/randomcolor": "^0.5.3",
     "query-string": "^6.8.2",
+    "randomcolor": "^0.5.4",
     "react": "^16.8.6",
     "react-async-hook": "^3.4.0",
     "react-dom": "^16.8.6",
