@@ -6,7 +6,7 @@
   "author": "Claudia Matosa <claudiamatosa@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn clean && mkdir -p dist && yarn build:favicon && yarn build:app && yarn build:image-data",
+    "build": "yarn clean && mkdir -p dist && yarn build:favicon && yarn build:app && yarn build:image-data && cp CNAME dist/",
     "build:app": "yarn webpack",
     "build:image-data": "node ./build/images.js",
     "build:favicon": "cp -r src/favicon/* dist/",
