@@ -1,5 +1,6 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   output: {
@@ -35,6 +36,11 @@ module.exports = {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      minify: true,
+      template: 'src/index.html'
+    }),
+
     new CopyPlugin([
       { from: 'src/static', to: 'static' }
     ]),
