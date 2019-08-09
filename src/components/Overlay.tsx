@@ -63,9 +63,9 @@ const ClearButton = css`
   &::before {
     display: block;
     content: '>';
-    font-family: pt-sans;
+    font-family: 'Indie Flower', cursive;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 50px;
     padding: 0 5px;
     color: white;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);

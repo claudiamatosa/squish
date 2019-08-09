@@ -39,18 +39,24 @@ const titleAnimation = keyframes`
 `;
 
 const Title = styled.h1`
-  font-family: pt-sans-narrow;
+  font-family: 'Indie Flower', cursive;
   font-weight: 600;
   text-align: center;
   font-size: 30px;
   color: #777777;
   padding: 0 20px;
-  line-height: 1;
+  line-height: 1.2;
 
   ${useBreakpoints('font-size', {
     small: '30px',
     medium: '40px',
     wide: '50px'
+  })}
+
+${useBreakpoints('margin-top', {
+    small: '25px',
+    medium: '35px',
+    desktop: '45px'
   })}
 `;
 

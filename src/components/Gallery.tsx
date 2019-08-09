@@ -23,14 +23,14 @@ const Wrapper = styled.ul`
   column-count: 1;
   column-gap: 0;
   list-style: none;
-  padding: 10px 0;
+  padding: 5px;
   margin: 0;
 
   ${useBreakpoints('column-count', columnCount)}
 `;
 
 const Item = styled.li`
-  margin: 0 0 0;
+  margin: 0 10px 20px 10px;
   padding: 0;
 `;
 
