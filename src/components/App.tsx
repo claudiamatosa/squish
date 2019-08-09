@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 import Gallery from './Gallery';
+import { useBreakpoints } from '../config/breakpoints';
 
 export interface AppProps {
   compiler: string;
@@ -38,13 +39,19 @@ const Title = styled.h1`
   font-family: pt-sans-narrow;
   font-weight: 600;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   color: #777777;
   padding: 0 20px;
   line-height: 1;
+
+  ${useBreakpoints('font-size', {
+    small: '30px',
+    medium: '40px',
+    wide: '50px'
+  })}
 `;
 
-const Squish = styled.span`
+const SquishStyle = styled.span`
   text-transform: uppercase;
   color: #667705;
   animation: ${titleAnimation} 1.5s cubic-bezier(0.280, 0.840, 0.420, 1);
@@ -52,10 +59,25 @@ const Squish = styled.span`
   animation-delay: 3s;
 `;
 
+const Squish = () => <SquishStyle>squish</SquishStyle>;
+
+const titles = [
+  <>You <Squish /> my breath away</>,
+  <><Squish /> me, <Squish /> me, say that you'll <Squish /> me</>,
+  <>You're simply the best, <Squish />ier than all the rest</>
+];
+
+const selectTitle = () => {
+  const min = 0;
+  const max = titles.length - 1;
+  const index =  Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+  return titles[index];
+};
+
 const App = (props: AppProps) => (
   <>
     <GlobalStyle />
-    <Title>you <Squish>squish</Squish> the life out of me</Title>
+    <Title>{selectTitle()}</Title>
     <Gallery />
   </>
 );

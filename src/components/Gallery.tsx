@@ -32,16 +32,6 @@ const Wrapper = styled.ul`
 const Item = styled.li`
   margin: 0 0 10px;
   padding: 0;
-
-  &:nth-child(odd) img {
-    border-top-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-  }
-
-  &:nth-child(even) img {
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 15px;
-  }
 `;
 
 const ImageLink = styled.a<{ readonly selected: boolean }>`
