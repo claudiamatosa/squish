@@ -10,6 +10,13 @@ export interface OverlayProps {
   imageUrl: string | null
 }
 
+interface Image {
+  width: Number,
+  height: Number,
+  path: string,
+  id: Number 
+}
+
 const innerPadding = {
   small: '0',
   medium: '20px',

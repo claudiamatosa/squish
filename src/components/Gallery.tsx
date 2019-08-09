@@ -10,6 +10,13 @@ export interface GalleryProps {
  
 }
 
+interface Image {
+  width: Number,
+  height: Number,
+  path: string,
+  id: Number 
+}
+
 export const columnCount = {
   mini: 1,
   small: 2,
@@ -53,7 +60,7 @@ const Image = styled.img`
   max-width: 100%;
 `;
 
-const buildImageUrl = (image: string): string => {
+const buildImageUrl = (image: Number): string => {
   const pathname = window.location.pathname;
   const params = parse(window.location.search);
   const newParams = stringify({
@@ -64,7 +71,7 @@ const buildImageUrl = (image: string): string => {
   return `${pathname}?${newParams}`;
 };
 
-const setView = (image: string | null): void => {
+const setView = (image: Number | null): void => {
   window.history.pushState({}, "", buildImageUrl(image));
 };
 
@@ -84,38 +91,38 @@ const Gallery = (props: GalleryProps) => {
     return (
       <>
         <Wrapper>
-          {images.map((image: string) => (
+          {images.map((image: Image) => (
             <Item>
               <ImageLink
-                href={buildImageUrl(image)}
-                selected={selectedImage === image}
+                href={buildImageUrl(image.id)}
+                selected={selectedImage === image.id}
                 onClick={(e) => {
                   e.preventDefault();
-                  setView(image);
-                  selectImage(image);
+                  setView(image.id);
+                  selectImage(image.id);
                 }}
               >
-                <Image src={image} alt="" />
+                <Image src={image.path} alt="" />
               </ImageLink>
             </Item>
           ))}
         </Wrapper>
 
         <Overlay
-          imageUrl={selectedImage}
+          imageUrl={selectedImage && images.find((image: Image) => image.id === selectedImage).path}
           next={() => {
             if (!selectedImage) return;
-            const currentImage = images.findIndex((image: string) => image === selectedImage);
+            const currentImage = images.findIndex((image: Image) => image.id === selectedImage);
             const nextImage = currentImage === images.length - 1 ? 0 : currentImage + 1;
-            setView(images[nextImage]);
-            selectImage(images[nextImage]);
+            setView(images[nextImage].id);
+            selectImage(images[nextImage].id);
           }}
           previous={() => {
             if (!selectedImage) return;
-            const currentImage = images.findIndex((image: string) => image === selectedImage);
+            const currentImage = images.findIndex((image: Image) => image.id === selectedImage);
             const previousImage = currentImage < 1 ? images.length - 1 : currentImage - 1;
-            setView(images[previousImage]);
-            selectImage(images[previousImage]);
+            setView(images[previousImage].id);
+            selectImage(images[previousImage].id);
           }}
           close={() => {
             setView(null);
