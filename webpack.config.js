@@ -1,3 +1,6 @@
+const CopyPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack');
+
 module.exports = {
   mode: "production",
 
@@ -27,5 +30,25 @@ module.exports = {
         loader: "source-map-loader"
       }
     ]
-  }
+  },
+
+  plugins: [
+    new CopyPlugin([
+      { from: 'src/static', to: 'static' }
+    ]),
+
+    new ImageminPlugin({
+      name: '[path][hash]-compressed.[ext]',
+      bail: false,
+      cache: true,
+      imageminOptions: {
+        plugins: [
+          ['mozjpeg', {
+            quality: 60,
+            progressive: true
+          }]
+        ]
+      }
+    })
+  ]
 };
