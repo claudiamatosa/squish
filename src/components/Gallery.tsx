@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import LazyLoad from 'react-lazyload';
 import { parse, stringify } from 'query-string';
 
 import Overlay from './Overlay';
@@ -105,7 +106,9 @@ const Gallery = (props: GalleryProps) => {
                   selectImage(image.id);
                 }}
               >
-                <Image src={image.path} alt="" />
+                <LazyLoad offset={50}>
+                  <Image src={image.path} alt="" />
+                </LazyLoad>
               </ImageLink>
             </Item>
           ))}
