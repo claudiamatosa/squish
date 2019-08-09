@@ -21,7 +21,7 @@ export const columnCount = {
 const Wrapper = styled.ul`
   line-height: 0;
   column-count: 1;
-  column-gap: 10px;
+  column-gap: 0;
   list-style: none;
   padding: 10px 0;
   margin: 0;
@@ -30,7 +30,7 @@ const Wrapper = styled.ul`
 `;
 
 const Item = styled.li`
-  margin: 0 0 10px;
+  margin: 0 0 0;
   padding: 0;
 `;
 
@@ -41,9 +41,11 @@ const ImageLink = styled.a<{ readonly selected: boolean }>`
   display: block;
   transition: filter 0.5s ease-in-out;
   filter: ${props => props.selected ? 'saturate(20%)' : 'none' };
+  z-index: 10;
 
   &:hover, &:focus {
     filter: saturate(200%) invert(10%) contrast(120%);
+    z-index: 50;
   }
 `;
 

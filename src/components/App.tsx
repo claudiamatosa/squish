@@ -61,7 +61,7 @@ const Squish = styled.span`
   })};
   animation: ${titleAnimation} 1.5s cubic-bezier(0.280, 0.840, 0.420, 1);
   display: inline-block;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 `;
 
 const titles = [
