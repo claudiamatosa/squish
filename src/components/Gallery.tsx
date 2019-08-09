@@ -81,8 +81,11 @@ const Gallery = (props: GalleryProps) => {
 
   React.useEffect(() => {
     const { view } = parse(window.location.search);
-    if (view) { selectImage(view) };
-  }, []);
+    if (images && typeof view !== 'undefined') {
+      const selected = images.find((image: Image) => image.id.toString() === view);
+      selected && selectImage(selected.id);
+    };
+  }, [images]);
 
   if (loading) return <div>😸</div>;
   if (error) return <div>Error: {error.message}</div>;
