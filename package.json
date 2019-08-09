@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn clean && mkdir -p dist && yarn build:favicon && yarn build:app && yarn build:image-data",
-    "build:app": "cp src/index.html dist/ && yarn webpack",
+    "build:app": "yarn webpack",
     "build:image-data": "node ./build/images.js",
     "build:favicon": "cp -r src/favicon/* dist/",
     "build-and-deploy": "NODE_ENV=production && yarn && yarn build && yarn deploy",
@@ -21,13 +21,13 @@
     "@types/styled-components": "^4.1.18",
     "copy-webpack-plugin": "^5.0.4",
     "http-server": "^0.11.1",
+    "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack": "^5.1.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "imagemin-mozjpeg": "^8.0.0"
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "query-string": "^6.8.2",

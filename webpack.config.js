@@ -2,14 +2,16 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack');
 
 module.exports = {
-  mode: "production",
+  output: {
+    filename: 'main.[chunkhash].js'
+  },
 
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: "source-map",
+  mode: 'production',
+
+  // devtool: 'source-map',
 
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   module: {
@@ -19,16 +21,16 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
+            loader: 'ts-loader'
           }
         ]
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      {
-        enforce: "pre",
-        test: /\.js$/,
-        loader: "source-map-loader"
-      }
+      // {
+      //   enforce: 'pre',
+      //   test: /\.js$/,
+      //   loader: 'source-map-loader'
+      // }
     ]
   },
 
