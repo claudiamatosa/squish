@@ -52,7 +52,7 @@ module.exports = {
       imageminOptions: {
         plugins: [
           ['mozjpeg', {
-            quality: 60,
+            quality: 50,
             progressive: true
           }]
         ]
