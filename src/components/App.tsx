@@ -43,7 +43,7 @@ const Title = styled.h1`
   font-weight: 600;
   text-align: center;
   font-size: 30px;
-  color: #777777;
+  color: #36454F;
   padding: 0 20px;
   line-height: 1.2;
 
