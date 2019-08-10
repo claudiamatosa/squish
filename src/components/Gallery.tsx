@@ -37,6 +37,12 @@ const Wrapper = styled.ul`
   ${useBreakpoints('column-count', columnCount)}
 `;
 
+const Loading = styled.div`
+  padding: 50px;
+  text-align: center;
+  font-size: 50px;
+`;
+
 const Item = styled.li`
   margin: 0 10px 20px 10px;
   padding: 0;
@@ -88,7 +94,7 @@ const Gallery = (props: GalleryProps) => {
     };
   }, [images]);
 
-  if (loading) return <div>😸</div>;
+  if (loading) return <Loading>😸</Loading>;
   if (error) return <div>Error: {error.message}</div>;
 
   if (images) {
