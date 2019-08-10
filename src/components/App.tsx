@@ -71,7 +71,7 @@ const Squish = styled.span`
 `;
 
 const titles = [
-  <>You <Squish>squish</Squish> my breath away</>,
+  <><Squish>squish</Squish> my breath away</>,
   <>Squish me, <Squish>squish</Squish> me, say that you'll squish me</>,
   <>You're simply the best, <Squish>squishier</Squish> than all the rest</>,
   <>And I'm free, free <Squish>squishin'</Squish></>,
