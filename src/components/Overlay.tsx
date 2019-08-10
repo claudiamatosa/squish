@@ -14,6 +14,7 @@ interface Image {
   width: Number,
   height: Number,
   path: string,
+  thumbnail: string,
   id: Number 
 }
 

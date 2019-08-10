@@ -14,6 +14,7 @@ export interface GalleryProps {
 interface Image {
   width: Number,
   height: Number,
+  thumbnail: string,
   path: string,
   id: Number 
 }
@@ -125,7 +126,7 @@ const Gallery = (props: GalleryProps) => {
                   />}
                 >
                   <Image
-                    src={image.path} alt=""
+                    src={image.thumbnail} alt=""
                     width={image.width.toString()}
                     height={image.height.toString()}
                   />

@@ -25,6 +25,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-webpack": "^5.1.0",
     "probe-image-size": "^4.1.1",
+    "sharp": "^0.23.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
