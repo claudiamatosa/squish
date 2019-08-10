@@ -79,7 +79,8 @@ const titles = [
   <>You can <Squish>squish</Squish> your own way</>,
   <>I'm too <Squish>squishy</Squish> (hot damn)</>,
   <>Does that make me <Squish>squishy</Squish>?</>,
-  <>I've got the <Squish>squish</Squish> like Jagger</>
+  <>I've got the <Squish>squish</Squish> like Jagger</>,
+  <>I never wanna hear you say I <Squish>squish</Squish> it that way</>
 ];
 
 const selectTitle = () => {

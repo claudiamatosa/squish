@@ -49,6 +49,7 @@ const Item = styled.li`
 `;
 
 const ImageLink = styled.a<{ readonly selected: boolean }>`
+  position: relative;
   text-decoration: none;
   margin: 0;
   padding: 0;
@@ -64,7 +65,9 @@ const ImageLink = styled.a<{ readonly selected: boolean }>`
 `;
 
 const Image = styled.img`
+  position: relative;
   max-width: 100%;
+  height: auto;
 `;
 
 const buildImageUrl = (image: Number): string => {
@@ -113,7 +116,11 @@ const Gallery = (props: GalleryProps) => {
                 }}
               >
                 <LazyLoad offset={50}>
-                  <Image src={image.path} alt="" />
+                  <Image
+                    src={image.path} alt=""
+                    width={image.width.toString()}
+                    height={image.height.toString()}
+                  />
                 </LazyLoad>
               </ImageLink>
             </Item>

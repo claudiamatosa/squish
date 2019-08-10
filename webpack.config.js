@@ -46,6 +46,7 @@ module.exports = {
     ]),
 
     new ImageminPlugin({
+      include: /\.jpg$/,
       name: '[path][hash]-compressed.[ext]',
       bail: false,
       cache: true,
