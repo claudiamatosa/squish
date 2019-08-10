@@ -115,7 +115,15 @@ const Gallery = (props: GalleryProps) => {
                   selectImage(image.id);
                 }}
               >
-                <LazyLoad offset={50}>
+                <LazyLoad
+                  offset={50}
+                  placeholder={<Image
+                    src='/static/images/pixel.gif'
+                    alt=""
+                    width={image.width.toString()}
+                    height={image.height.toString()}
+                  />}
+                >
                   <Image
                     src={image.path} alt=""
                     width={image.width.toString()}
