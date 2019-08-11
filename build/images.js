@@ -15,6 +15,10 @@ fs.readdir(path.join(__dirname, '..', 'dist/static/images/gallery'), (err, files
 
       sharp(data)
         .resize(Math.floor(width / 3), Math.floor(height / 3))
+        .jpeg({
+          progressive: true,
+          quality: 70
+        })
         .toFile(path.join(__dirname, '..', 'dist', thumbnailPath));
 
       gallery.push({

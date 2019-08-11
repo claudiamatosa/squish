@@ -143,7 +143,7 @@ const Gallery = (props: GalleryProps) => {
                 <ImageContainer>
                   <Placeholder image={image} />
 
-                  <LazyLoad offset={100}>
+                  <LazyLoad offset={300}>
                     <Image
                       src={image.thumbnail}
                       alt=""
