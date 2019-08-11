@@ -125,11 +125,20 @@ interface KeyboardActions {
 
 const Overlay = ({ next, previous, close, imageUrl }: OverlayProps) => {
   const wrapper = React.useRef(null);
+  const [ imageSrc, setImageSrc ] = React.useState(null);
 
   React.useEffect(() => {
     wrapper.current && wrapper.current.focus();
   });
 
+  React.useEffect(() => {
+    setImageSrc('');
+  }, [imageUrl]);
+
+  React.useEffect(() => {
+    setImageSrc(imageUrl)
+  }, [imageSrc])
+  
   const keyEvents: KeyboardActions = {
     ArrowLeft: previous,
     ArrowRight: next,
@@ -145,7 +154,7 @@ const Overlay = ({ next, previous, close, imageUrl }: OverlayProps) => {
     <Wrapper tabIndex={0} onKeyUp={keyUp} ref={wrapper}>
       <Close onClick={close} title="Close" />
       <Previous onClick={previous} title="Previous image" />
-      <Image src={imageUrl} alt="" />
+      <Image src={imageSrc} alt="" />
       <Next onClick={next} title="Next image" />
     </Wrapper>
   ): null
