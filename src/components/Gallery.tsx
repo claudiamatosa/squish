@@ -65,10 +65,18 @@ const ImageLink = styled.a<{ readonly selected: boolean }>`
   }
 `;
 
-const Image = styled.img`
+const ImageContainer = styled.div`
   position: relative;
+  display: block;
+`;
+
+const Image = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   max-width: 100%;
   height: auto;
+  z-index: 100;
 `;
 
 const buildImageUrl = (image: Number): string => {
@@ -85,6 +93,21 @@ const buildImageUrl = (image: Number): string => {
 const setView = (image: Number | null): void => {
   window.history.pushState({}, "", buildImageUrl(image));
 };
+
+const Placeholder = ({ image: { height, width } }: { image: Image }) => (
+  <svg
+    style={{
+      backgroundColor: 'gray',
+      width: '100%',
+      height: 'auto'
+    }}
+    width={`${width}px`}
+    height={`${height}px`}
+    viewBox={`0 0 ${width} ${height}`}
+  >
+    <path d="M0 0h48v1H0z" fill="transparent" fillRule="evenodd" />
+  </svg>
+)
 
 const Gallery = (props: GalleryProps) => {
   const { loading, error, images } = useGalleryData();
@@ -116,21 +139,18 @@ const Gallery = (props: GalleryProps) => {
                   selectImage(image.id);
                 }}
               >
-                <LazyLoad
-                  offset={50}
-                  placeholder={<Image
-                    src='/static/images/pixel.gif'
-                    alt=""
-                    width={image.width.toString()}
-                    height={image.height.toString()}
-                  />}
-                >
-                  <Image
-                    src={image.thumbnail} alt=""
-                    width={image.width.toString()}
-                    height={image.height.toString()}
-                  />
-                </LazyLoad>
+                <ImageContainer>
+                  <Placeholder image={image} />
+
+                  <LazyLoad offset={100}>
+                    <Image
+                      src={image.thumbnail}
+                      alt=""
+                      width={image.width.toString()}
+                      height={image.height.toString()}
+                    />
+                  </LazyLoad>
+                </ImageContainer>
               </ImageLink>
             </Item>
           ))}
