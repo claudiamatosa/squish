@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import LazyLoad from 'react-lazyload';
 import { parse, stringify } from 'query-string';
+import randomColor from 'randomcolor';
 
 import Overlay from './Overlay';
 import { useBreakpoints } from '../config/breakpoints';
@@ -97,7 +98,7 @@ const setView = (image: Number | null): void => {
 const Placeholder = ({ image: { height, width } }: { image: Image }) => (
   <svg
     style={{
-      backgroundColor: 'gray',
+      backgroundColor: randomColor({ hue: 'monochrome' }),
       width: '100%',
       height: 'auto'
     }}
