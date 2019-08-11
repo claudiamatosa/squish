@@ -41,6 +41,9 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(30, 30, 30, 0.8);
+  background-image: url('/static/images/loader.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
 
   ${useBreakpoints('padding', innerPadding)}
 `;
