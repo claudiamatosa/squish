@@ -17,7 +17,7 @@ fs.readdir(path.join(__dirname, '..', 'dist/static/images/gallery'), (err, files
         .resize(Math.floor(width / 3), Math.floor(height / 3))
         .jpeg({
           progressive: true,
-          quality: 70
+          quality: 60
         })
         .toFile(path.join(__dirname, '..', 'dist', thumbnailPath));
 
